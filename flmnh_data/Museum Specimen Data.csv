@@ -1,0 +1,163 @@
+﻿Group,Genus,Species,Subspecies,Specimen ID,Date,Data,Country,Locality,Elevation,Other Info,Sex,Mass,Wing.Length,Secondary.Length,Kipps_D,HWI,Tarsus.Length,Tail.Length,Beak.Width,Beak.Depth,Beak.Length_Culmen,Measurer
+Island,Coereba,flaveola,sharpei,22243,,N,CAYMAN ISLANDS,Grand Cayman,,,,NA,61.5,55.26,6.24,10.14634146,20.65,51.61,3.22,3.68,14.84,Brynn
+Island,Coereba,flaveola,sharpei,36115,,N,CAYMAN ISLANDS,Cayman Brac BWI,,,,NA,54.94,46.53,8.41,15.3076083,18.35,42.75,3.19,3.53,14.3,Brynn
+Island,Coereba,flaveola,sharpei,36114,,N,CAYMAN ISLANDS,"Newlands, Grand Cayman",,,,NA,58.89,53.83,5.06,8.592290711,19.53,45.45,3.04,3.42,13.56,Brynn
+Island,Coereba,flaveola,caboti,9223,,N,MEXICO,Cozumel,,,,NA,61.27,53.34,7.93,12.94271258,16.9,44.12,3.35,4.36,14.16,Mia
+Island,Coereba,flaveola,caboti,9226,,N,MEXICO,Cozumel,,,,NA,58.08,51.02,7.06,12.15564738,15.61,36.61,3.69,NA,13.99,Mia
+Island,Coereba,flaveola,caboti,9225,,N,MEXICO,Cozumel,,,,NA,56.5,50.76,5.74,10.15929204,16.73,40.48,3.19,NA,13.32,Mia
+Island,Coereba,flaveola,caboti,9224,,N,MEXICO,Cozumel,,,,NA,54.15,46.33,7.82,14.44136657,16.36,37.89,3.36,NA,13.73,Mia
+Island,Coereba,flaveola,mexicana,46358,8/2/08,Y,PANAMA,PANAMA: PROV. BOCAS DEL TORO; ISLA COLON; SMITHSONIAN TROPICAL RESEARCH INSTITUTE STATION,NA,Netted in scrubby grassy field,F,9.3,57.5,46.13,11.37,19.77391304,13.01,38.08,3.42,4,14.14,Mia
+Island,Coereba,flaveola,mexicana,46286,8/4/07,Y,PANAMA,PANAMA: PROV. BOCAS DEL TORO; ISLA COLON; SMITHSONIAN TROPICAL RESEARCH INSTITUTE STATION,NA,"netted, scrub/mangrove edge",M,9.6,54.82,46.77,8.05,14.68442174,13.91,32.53,3.08,3.32,13.33,Mia
+Island,Coereba,flaveola,mexicana,46280,9/4/07,Y,PANAMA,PANAMA: PROV. BOCAS DEL TORO; ISLA COLON; SMITHSONIAN TROPICAL RESEARCH INSTITUTE STATION,NA,"netted, scrub/mangrove edge",M,9.9,55.77,52.61,3.16,5.666128743,12.89,30.84,3.04,3.53,14.23,Mia
+Island,Coereba,flaveola,luteola,45916,,Y,TRINIDAD & TOBAGO,2.7 KM SW MORNE BLEU,,,,10.3,58.35,49.55,8.8,15.08140531,16.32,36.21,3.17,3.68,11.66,Brynn
+Island,Coereba,flaveola,luteola,45919,,Y,TRINIDAD & TOBAGO,2.7 KM SW MORNE BLEU,,,,10.4,56.55,48.85,7.7,13.61626879,16.43,36.4,3.17,3.32,12.5,Brynn
+Island,Coereba,flaveola,luteola,46026,,Y,TRINIDAD & TOBAGO,2.7 KM SW MORNE BLEU,,,,10.6,56.59,49.08,7.51,13.27089592,16.75,33.18,3.1,3.49,12.42,Brynn
+Island,Coereba,flaveola,luteola,46028,,Y,TRINIDAD & TOBAGO,2.7 KM SW MORNE BLEU,,,,11.4,67.8,52.3,15.5,22.86135693,18.02,47.32,3.17,3.97,13.3,Brynn
+Island,Coereba,flaveola,luteola,45927,,Y,TRINIDAD & TOBAGO,"ARIPO VALLEY, L'ORANGE ESTATE",,,,10.2,55.51,45.63,9.88,17.79859485,15.66,38.38,3.07,3.45,12.94,Brynn
+Island,Coereba,flaveola,luteola,10819,,N,TRINIDAD & TOBAGO,ARIMA VALLEY,,,,,51.05,43.36,7.69,15.06366308,16.15,31.66,3.12,3.44,11.78,Brynn
+Island,Coereba,flaveola,luteola,46435,,Y,TRINIDAD & TOBAGO,CANOE BAY FOREST,,,,10.45,64.74,54.72,10.02,15.47729379,18.27,35.48,3.23,3.57,12.51,Brynn
+Island,Coereba,flaveola,,46436,,Y,TRINIDAD & TOBAGO,CANOE BAY FOREST,,,,11.1,65.61,52.88,12.73,19.4025301,17.89,43.59,3.13,3.73,12.55,Brynn
+Island,Coereba,flaveola,luteola,46439,,Y,TRINIDAD & TOBAGO,CANOE BAY FOREST,,,,10.65,63.7,53.67,10.03,15.74568289,17.67,35.65,3.01,3.61,12.32,Brynn
+Island,Coereba,flaveola,,46390,,Y,TRINIDAD & TOBAGO,TOBAGO FOREST RESERVE,,,,10.7,55.02,46.09,8.93,16.23046165,16.59,40.23,3.15,3.59,12.21,Brynn
+Island,Coereba,flaveola,luteola,45883,,Y,TRINIDAD & TOBAGO,CANOE BAY FOREST,,,,11,57.86,47.87,9.99,17.26581403,15.6,38.71,3.32,3.8,12.22,Brynn
+Island,Coereba,flaveola,luteola,46023,,Y,TRINIDAD & TOBAGO,,,,,10.1,51.94,41.08,10.86,20.90874085,16.6,34.43,3.04,3.77,11.46,Brynn
+Mainland,Coereba,flaveola,caucae,36118,1/10/96,N,COLOMBIA,"COLOMBIA: VALLE DEL CAUCA, CALI, NEAR",1600m,,M,NA,57.47,47.78,9.69,16.86097094,13.18,38.73,3.21,NA,13.8,Mia
+Mainland,Coereba,flaveola,caucae,36119,4/10/66,N,COLOMBIA,"COLOMBIA: VALLE DEL CAUCA, CALI, NEAR",1700m,,F,NA,54.23,46.43,7.8,14.38318274,14.73,34.54,3.7,NA,12.61,Mia
+Mainland,Coereba,flaveola,mexicana,9228,NA,N,GUATEMALA,Guatemala,NA,beak opened,NA,NA,48.68,44.37,4.31,8.853738702,13.89,33.95,2.86,NA,12.49,Mia
+Mainland,Coereba,flaveola,mexicana,9227,NA,N,MEXICO,mexico: MIRADOR,NA,NA,NA,NA,49.37,45.39,3.98,8.061575856,13.49,31.66,3.22,3.26,12.52,Mia
+Mainland,Coereba,flaveola,mexicana,2177,2/7/49,N,MEXICO,Oaxaca: LaCova,1000m,,F,NA,50.49,46.09,4.4,8.71459695,15.1,30.81,2.94,3.41,12.6,Mia
+Mainland,Coereba,flaveola,mexicana,2178,13/07/1949,,MEXICO,Oaxaca: LaCova,1000m,skele fragments,M,NA,54.02,46.9,7.12,13.18030359,15.56,37.79,3.12,3.3,12.69,Mia
+Mainland,Coereba,flaveola,mexicana,2179,25/07/1949,N,MEXICO,Oaxaca: LaCova,1000m,,M,NA,54.52,46.28,8.24,15.11371974,14.8,35.87,3.06,3.35,12.76,Mia
+Mainland,Coereba,flaveola,pacifica,49413,18/10/2011,Y,PERU,Peru Depto. Plura Plov. SullaNA Coto de Caze El Angolo 14km SE FerNAndez 4 degrees 14.33'S 80 degrees 44.70'W,854m,"netted, semideciduous forest, p skele",M,8.8,56.47,49.06,7.41,13.12201169,16.96,30.38,3,3.52,13.79,Brynn
+Mainland,Coereba,flaveola,magnirostris,49256,14/10/2010,Y,PERU,PERU: DEPTO. CAJAMARCA; PROV. JAEN; AREA DE CONSERVACION PRIVADA GOTAS DE AGUA,NA,NA,M,11.06,69.52,55.29,14.23,20.4689298,17.08,41.21,3.46,3.62,17.15,Brynn
+Mainland,Coereba,flaveola,magnirostris,49222,17/10/2010,Y,PERU,PERU: DEPTO. CAJAMARCA; PROV. JAEN; AREA DE CONSERVACION PRIVADA GOTAS DE AGUA,NA,NA,M,9.43,63.65,53.53,10.12,15.89945012,17.33,29.08,3.46,3.73,15.68,Brynn
+Mainland,Coereba,flaveola,magnirostris,49226,18/10/2010,Y,PERU,PERU: DEPTO. CAJAMARCA; PROV. JAEN; AREA DE CONSERVACION PRIVADA GOTAS DE AGUA,NA,NA,F,9.19,58.38,51.35,7.03,12.04179514,16.2,33.45,3.36,3.56,16.35,Brynn
+Mainland,Coereba,flaveola,magnirostris,49235,21/10/2010,Y,PERU,PERU: DEPTO. CAJAMARCA; PROV. JAEN; AREA DE CONSERVACION PRIVADA GOTAS DE AGUA,NA,NA,F,8.73,58.4,51.74,6.66,11.40410959,17.25,33.68,3.33,3.57,13.9,Brynn
+Mainland,Coereba,flaveola,magnirostris,47340,7/11/09,Y,PERU,PERU: DEPTO. AMAZONAS; PROV. CHACHAPOYAS; BALSAS,NA,NA,M,7.45,54.82,51.57,3.25,5.928493251,16.52,33.26,3.32,3.89,14.83,Brynn
+Mainland,Coereba,flaveola,magnirostris,47367,,Y,PERU,,,,,8.75,60.05,50.75,9.3,15.48709409,17.04,36.03,2.91,3.54,14.78,Brynn
+Mainland,Coereba,flaveola,magnirostris,47381,,Y,PERU,,,,,9.85,61.97,56.79,5.18,8.358883331,15.95,40.21,3.13,3.46,14.79,Brynn
+Island,Coereba,flaveola,luteola,45995,,Y,TRINIDAD & TOBAGO,,,,,9.9,57.59,49.38,8.21,14.25594721,17.36,35.14,3.22,3.67,12.06,Brynn
+Island,Coereba,flaveola,luteola,45892,,Y,TRINIDAD & TOBAGO,,,,,10.1,58.43,51.08,7.35,12.57915454,16.66,42.87,3.11,3.82,12.47,Brynn
+Island,Coereba,flaveola,luteola,45902,,Y,TRINIDAD & TOBAGO,,,,,9.45,57.15,45.4,11.75,20.55993001,17.19,38.48,3.41,3.87,12.78,Brynn
+Island,Coereba,flaveola,luteola,46008,,Y,TRINIDAD & TOBAGO,,,,,10.2,56.25,43.56,12.69,22.56,17.95,41.52,3.29,3.52,12.36,Brynn
+Island,Coereba,flaveola,,56059,,N,PUERTO RICO,,,,,NA,59.04,51.41,7.63,12.92344173,16.59,42.42,3.18,NA,14.46,Brynn
+Island,Coereba,flaveola,,56058,,N,PANAMA,,,,,NA,56.67,48.79,7.88,13.90506441,15.94,35.01,2.74,3.54,13.41,Brynn
+Island,Coereba,flaveola,barthomelica,10193,,N,DUTCH WEST INDIES,,,,,NA,58.36,46.62,11.74,20.11651816,17.98,42.48,3.13,3.32,13.55,Brynn
+Island,Coereba,flaveola,barbadensis,10251,,N,BARBADOS,,,,,NA,61.3,50.93,10.37,16.91680261,18.62,47.76,2.72,3.19,12.63,Brynn
+Island,Coereba,flaveola,barbadensis,10225,,N,BARBADOS,,,,,NA,55.29,45.77,9.52,17.21830349,17.48,35.65,2.98,3.06,12.38,Brynn
+Island,Coereba,flaveola,barbadensis,10224,,N,BARBADOS,,,,,NA,53.78,45.66,8.12,15.09854965,16.82,33.91,2.98,3.26,11.63,Brynn
+Island,Coereba,flaveola,barbadensis,10223,,N,BARBADOS,,,,,NA,51.98,42.1,9.88,19.0073105,16.46,38.61,2.56,2.98,12.16,Brynn
+Mainland,Coereba,flaveola,luteola,36120,,N,COLOMBIA,,,,,NA,52.24,43.6,8.64,16.53905054,18.57,33.26,3.48,3.34,11.22,Brynn
+Mainland,Coereba,flaveola,luteola,36121,,N,COLOMBIA,,,,,NA,58.06,47.43,10.63,18.30864623,17.13,34.54,3.24,3.19,13.34,Brynn
+Mainland,Coereba,flaveola,luteola,9229,,N,COLOMBIA,,,,,NA,56.92,45.99,10.93,19.20238932,18.28,36.15,2.93,3.21,10.87,Brynn
+Island,Coereba,flaveola,luteola,42637,,Y,TRINIDAD & TOBAGO,,,,,10.1,60.55,50.52,10.03,16.56482246,16.79,31.89,3.15,3.76,13,Brynn
+Island,Coereba,flaveola,bahamensis,30690,,N,BAHAMAS,,,,F,NA,60.69,50.16,10.53,17.3504696,19.02,43.36,3.53,3.81,12.98,Mia
+Island,Coereba,flaveola,luteola,42586,,Y,TRINIDAD & TOBAGO,,,,,9.3,51.53,43.19,8.34,16.18474675,16.82,32.45,3.12,3.2,12.87,Brynn
+Island,Coereba,flaveola,bahamensis,14319,,N,BAHAMAS,,,,M,NA,64.35,45.74,18.61,28.91996892,17.88,40.24,3.17,3.56,12.21,Mia
+Island,Coereba,flaveola,luteola,46427,,Y,TRINIDAD & TOBAGO,,,,,10.25,52.55,42.52,10.03,19.08658421,15.02,31.45,3.27,3.25,13.24,Brynn
+Island,Coereba,flaveola,luteola,46369,,Y,TRINIDAD & TOBAGO,,,,,10.8,60.24,51.04,9.2,15.27224436,14.71,33.85,3.21,3.4,12.9,Brynn
+Island,Coereba,flaveola,bahamensis,41211,,N,BAHAMAS,,,,M,8.3,63.23,49.3,13.93,22.03068164,18.71,42.96,3.78,4.19,13.98,Mia
+Island,Coereba,flaveola,luteola,46370,,Y,TRINIDAD & TOBAGO,,,,,11.95,61.93,52.04,9.89,15.96964315,17.11,30.89,3.25,3.45,13,Brynn
+Island,Coereba,flaveola,luteola,45977,,Y,TRINIDAD & TOBAGO,,,,,11.8,61.41,50.28,11.13,18.12408403,15.98,41.36,3.17,3.46,12.31,Brynn
+Island,Coereba,flaveola,bahamensis,41212,,Y,BAHAMAS,,,,F,10.8,61.07,44.33,16.74,27.41116751,20.55,42.82,3.98,3.84,13.59,Mia
+Island,Coereba,flaveola,luteola,45866,,Y,TRINIDAD & TOBAGO,,,,,10.4,56.05,44.63,11.42,20.37466548,16.69,32.96,3.05,3.43,12.28,Brynn
+Island,Coereba,flaveola,bahamensis,8928,,N,BAHAMAS,,,,M,NA,66.34,53.75,12.59,18.97799216,18.56,51.43,3.38,4.07,13.65,Mia
+Island,Coereba,flaveola,bahamensis,9230,,N,BAHAMAS,,,,F,NA,59.99,49.77,10.22,17.0361727,16.71,43.18,3.46,4.16,13.27,Mia
+Island,Coereba,flaveola,luteola,46461,,Y,TRINIDAD & TOBAGO,,,,,11.15,56.16,46.33,9.83,17.50356125,16.46,39.85,3.26,3.59,12.36,Brynn
+Island,Coereba,flaveola,luteola,46511,,Y,TRINIDAD & TOBAGO,,,,,10,51.4,42.1,9.3,18.09338521,15.48,35.39,3.03,3.48,11.81,Brynn
+Island,Coereba,flaveola,bahamensis,10214,,N,BAHAMAS,,,,F,NA,54.57,44.16,10.41,19.07641561,18.58,37.12,2.96,,14,Mia
+Island,Coereba,flaveola,portoricensis,9232,,N,PUERTO RICO,,,,,NA,61.3,49.13,12.17,19.85318108,16.58,44.15,3.14,3.55,13.85,Brynn
+Island,Coereba,flaveola,bahamensis,40114,,Y,TURKS & CAICOS ISLANDS,,,,F,7.8,58.69,46.4,12.29,20.94053501,19.1,34,3.44,3.84,14.71,Mia
+Island,Coereba,flaveola,portoricensis,4231,,N,PUERTO RICO,,,,,NA,61.27,54.09,7.18,11.71862249,15.84,47.04,3.17,NA,14.72,Brynn
+Island,Coereba,flaveola,bahamensis,40117,,Y,TURKS & CAICOS ISLANDS,,,,M,9.1,65.26,53.19,12.07,18.49524977,17.81,37.95,3.01,3.7,14.34,Mia
+Island,Coereba,flaveola,portoricensis,30694,,N,PUERTO RICO,,,,,NA,57.93,48.5,9.43,16.27826687,17.43,45.64,3.09,3.69,14.62,Brynn
+Island,Coereba,flaveola,flaveola,18148,,N,JAMAICA,,,,M,7.7,60.18,43.93,16.25,27.00232635,17.47,41.26,3.01,3.87,12.45,Mia
+Island,Coereba,flaveola,bananivora,30691,,N,DOMINICAN REPUBLIC,,,,,8.4,57.04,49.25,7.79,13.65708275,14.93,41.04,2.87,3.35,12.28,Brynn
+Island,Coereba,flaveola,flaveola,11225,,N,JAMAICA,,,,M,NA,59.37,47.08,12.29,20.70069058,16.26,41.78,3.25,3.97,12.07,Mia
+Island,Coereba,flaveola,bananivora,52056,,Y,DOMINICAN REPUBLIC,,,,,7.3,55.35,45.48,9.87,17.83197832,15.56,41.59,2.38,3.09,11.86,Brynn
+Island,Coereba,flaveola,flaveola,36113,,N,JAMAICA,,,,M,NA,56.43,47.41,9.02,15.98440546,16.68,38.9,3.26,3.7,11.92,Mia
+Island,Coereba,flaveola,bananivora,8045,,N,HAITI,,,,,NA,62.18,52.11,10.07,16.19491798,17.14,39.73,2.97,3.18,11.34,Brynn
+Island,Coereba,flaveola,flaveola,40113,,Y,JAMAICA,,,,M,NA,54.95,47.96,6.99,12.72065514,,,,,,Mia
+Island,Coereba,flaveola,bananivora,21048,,N,HAITI,,,,,NA,50.19,43.68,6.51,12.9707113,15.14,29.58,2.54,2.97,10.26,Brynn
+Island,Coereba,flaveola,flaveola,50059,,Y,JAMAICA,,,,M,10.1,63.34,51.76,11.58,18.28228608,,,,,,Mia
+Mainland,Euphonia,affinis,,5030,,Y,"HONDURAS, MORAZAN",,,,,NA,51.47,41.88,9.59,18.63221294,11.47,37.54,3.28,3.76,6.63,Brynn
+Island,Euphonia,jamaica,,12315,,N,"JAMAICA, ST. JAMES PARISH",,,,M,NA,63.05,51.35,11.7,18.55670103,16.6,42.5,5.52,6.87,7.86,Mia
+Mainland,Euphonia,affinis,,5028,,N,"HONDURAS, MORAZAN",,,,,NA,51.41,43.59,7.82,15.21104843,12.61,32.94,4.24,4.08,7.15,Brynn
+Island,Euphonia,jamaica,,36056,,N,"JAMAICA, ST. JAMES PARISH",,,,M,NA,64.97,49.16,15.81,24.33430814,17.11,45.43,6.49,6.46,8.4,Mia
+Mainland,Euphonia,affinis,,5026,,N,"HONDURAS, MORAZAN",,,,,NA,50.93,42.91,8.02,15.74710387,13.15,34.07,3.37,3.93,6.25,Brynn
+Island,Euphonia,jamaica,,11229,,N,"JAMAICA, ST. JAMES PARISH",,,,F,16.4,63.77,51.69,12.08,18.94307668,17.14,41,5.97,6.34,8.69,Mia
+Mainland,Euphonia,affinis,,5025,,N,"HONDURAS, EL PARAISO",,,,,NA,52.66,44.12,8.54,16.21724269,13.26,39.03,3.73,3.87,7.21,Brynn
+Mainland,Euphonia,chlorotica,taczanowskii,49153,,Y,"PERU, DEPTO. CAJAMARCA, PROV. JAEN",,,,,10.99,56.56,42.95,13.61,24.06294201,14.03,41.23,4.4,4.05,7.78,Brynn
+Mainland,Euphonia,affinis,affinis,5020,,N,"MEXICO, OAXACA",,,,M,NA,49.23,37.73,11.5,23.35974,11.83,30.3,5.14,3.34,5.72,Mia
+Mainland,Euphonia,chlorotica,taczanowskii,49238,,Y,"PERU, DEPTO. CAJAMARCA, PROV. JAEN",,,,,9.35,58.85,46.68,12.17,20.67969414,13.4,44.43,4.17,4.51,8.47,Brynn
+Mainland,Euphonia,affinis,affinis,5021,,N,"MEXICO, OAXACA",,,,M,NA,54.33,42.12,12.21,22.4737714,15.18,35.03,5.12,3.96,7.13,Mia
+Mainland,Euphonia,chlorotica,taczanowskii,49169,,Y,"PERU, DEPTO. CAJAMARCA, PROV. JAEN",,,,,10.65,56.08,45.41,10.67,19.02639087,13.71,33.59,4.15,4.31,7.94,Brynn
+Mainland,Euphonia,affinis,affinis,5022,,N,"MEXICO, OAXACA",,,,M,NA,52.64,41.79,10.85,20.61170213,14.3,37.36,4.41,4.17,7.85,Mia
+Mainland,Euphonia,chlorotica,taczanowskii,47329,,Y,"PERU, DEPTO. AMAZONAS, PROV. CHACHAPOYAS",,,,,10.6,54.82,44.24,10.58,19.29952572,13.19,34.33,4.1,4.14,7.53,Brynn
+Mainland,Euphonia,affinis,affinis,5023,,N,"MEXICO, OAXACA",,,,M,NA,54.5,42.07,12.43,22.80733945,13.19,33.14,4.1,3.89,7.76,Mia
+Mainland,Euphonia,chlorotica,taczanowskii,47386,,Y,"PERU, DEPTO. AMAZONAS, PROV. CHACHAPOYAS",,,,,10.85,57.59,45.09,12.5,21.70515715,14.45,34.98,4.23,4.3,8.16,Brynn
+Mainland,Euphonia,affinis,affinis,9269,,N,"MEXICO, YUCATAN",,,,,NA,48.9,36.59,12.31,25.17382413,12.37,32.65,4.61,3.92,6.6,Mia
+Mainland,Euphonia,affinis,affinis,14309,,N,"MEXICO, CHIAPAS",,2400FT,,,NA,53.01,39.95,13.06,24.63686097,13.69,34.97,4.59,4.16,6.12,Mia
+Mainland,Euphonia,affinis,affinis,5024,,N,"HONDURAS, MORAZAN",,,,M,NA,49.23,42.92,6.31,12.81738777,11.99,34.5,4.19,3.83,6.79,Mia
+Mainland,Euphonia,affinis,affinis,5031,,N,"HONDURAS, MORAZAN",,2600ft,,M,NA,52.14,43.22,8.92,17.10778673,14.53,31.66,4.28,3.8,6.43,Mia
+Mainland,Euphonia,affinis,affinis,1567,,N,"HONDURAS, MORAZAN",,2600ft,,F,NA,51.36,42.8,8.56,16.66666667,13.8,30.72,4.77,4.22,6.55,Mia
+Mainland,Euphonia,affinis,affinis,1557,,N,"HONDURAS, MORAZAN",,2600FT,,M,NA,50.52,45.1,5.42,10.72842439,13.72,34.49,3.96,4.12,6.43,Mia
+Mainland,Euphonia,affinis,affinis,1558,,N,"HONDURAS, PARAISO",,1900ft,,F,NA,51.92,42.4,9.52,18.33590139,13.7,31.96,4.59,4.15,6.51,Mia
+Mainland,Euphonia,affinis,affinis,5029,,N,"HONDURAS, MORAZAN",,2600ft,,F,NA,50.64,42.17,8.47,16.72590837,13.19,32.29,4.87,3.84,6.56,Mia
+Mainland,Euphonia,affinis,affinis,5027,,N,"=VLOOKUP(E107,Euph_Chlor!W160A$1:G$81,6,FALSE)",,2600FT,,F,NA,53.85,43.01,10.84,20.12999071,12.87,31.74,4.66,3.7,6.65,Mia
+Mainland,Euphonia,chlorotica,,9879,,N,BRAZIL,,,,,NA,51.03,47.71,3.32,6.505976876,15.84,40.93,3.87,4.79,8.51,Brynn
+Mainland,Euphonia,saturata,,36058,,N,"COLOMBIA, TOLIMA",,,,M,NA,59.54,47.64,11.9,19.98656365,14.04,38.38,4.22,4.15,7.03,Brynn
+Island,Euphonia,violacea,rodwayi,45979,,Y,"TRINIDAD & TOBAGO, TRINIDAD, ST. GEORGE CO.",,,,M,NA,58.34,44.93,13.41,22.98594446,14.25,37.27,5.38,5.44,8.86,Mia
+Island,Euphonia,violacea,rodwayi,42650,,Y,"TRINIDAD & TOBAGO, TRINIDAD, ST. GEORGE CO.",,,,M,14.3,58.98,48.91,10.07,17.07358427,16.42,40,4.84,5.34,8.53,Brynn
+Island,Euphonia,violacea,rodwayi,45859,,Y,"TRINIDAD & TOBAGO, TRINIDAD, ST. GEORGE CO.",,,,F,13.6,55.19,45.25,9.94,18.01050915,14.43,36.16,6.2,5.8,9.25,Mia
+Island,Euphonia,violacea,rodwayi,10807,,N,"TRINIDAD & TOBAGO, TRINIDAD, NARIVA CO.",,,,M,NA,57.57,45.16,12.41,21.55636616,15.94,35.4,4.66,4.6,8.91,Brynn
+Island,Euphonia,violacea,rodwayi,46421,,Y,"TRINIDAD & TOBAGO, TRINIDAD, ST. GEORGE CO.",,,,F,14.6,57.04,47.59,9.45,16.56732118,15.93,32.32,5.77,5.35,9.26,Mia
+Island,Euphonia,violacea,rodwayi,46365,,Y,"TRINIDAD & TOBAGO, TRINIDAD, ST. GEORGE CO.",,,,M,15.3,59.51,46.46,13.05,21.92908755,14.21,30.06,4.43,5.12,8.93,Brynn
+Island,Euphonia,violacea,rodwayi,46429,,Y,"TRINIDAD & TOBAGO, TRINIDAD, ST. GEORGE CO.",,,,M,14,58.95,47.72,11.23,19.05004241,14.89,34.25,4.92,5.42,9.07,Mia
+Mainland,Euphonia,pectoralis,,9877,,N,BRAZIL,,,,,NA,64.98,52.38,12.6,19.39058172,15.57,38.14,5.54,5.5,9.9,Mia
+Island,Euphonia,laniirostris,,21877,,N,"PANAMA, PANAMA PROVINCE",,,,M,NA,64.23,50.03,14.2,22.1080492,15.48,35.85,4.69,5.6,9.01,Brynn
+Mainland,Euphonia,rufiventris,,9878,,N,BRAZIL,,,,,NA,57.84,48.67,9.17,15.85408022,14.68,34.82,5.3,5,8.53,Mia
+Mainland,Euphonia,laniirostris,,36061,,N,"COLOMBIA, TOLIMA",,,,M,NA,57.28,43.18,14.1,24.61592179,13.9,43.74,4.9,6,9.94,Brynn
+Mainland,Euphonia,minuta,,36065,,N,"SURINAME, BROKOPONDO DISTRICT",,,,F,NA,46.43,38.84,7.59,16.34718932,12.18,24.3,4.04,3.63,6.45,Mia
+Mainland,Euphonia,laniirostris,,36059,,N,"COLOMBIA, TOLIMA",,,,M,NA,65.56,50.28,15.28,23.30689445,14.68,42.64,5.49,NA,9.56,Brynn
+Mainland,Euphonia,minuta,,36066,,N,"SURINAME, BROKOPONDO DISTRICT",,,,M,NA,48.04,38.41,9.63,20.04579517,12.6,24.8,4.51,3.82,7.52,Mia
+Mainland,Euphonia,laniirostris,,36060,,N,"COLOMBIA, CESAR",,,,F,NA,57.1,46.54,10.56,18.4938704,14.17,36.43,5.4,NA,9.43,Brynn
+Mainland,Euphonia,gouldi,gouldi,5012,,N,"MEXICO, OAXACA",,,,F,NA,54.81,43.51,11.3,20.61667579,14.01,31,5.19,4.79,8.71,Mia
+Mainland,Euphonia,gouldi,gouldi,5011,,N,"MEXICO, OAXACA",,,,M,NA,55.18,40.06,15.12,27.40123233,13.67,32.09,4.93,5.28,8.47,Mia
+Mainland,Euphonia,laniirostris,hypoxantha,20451,,N,"ECUADOR, PROV. GUAYAS",,,,F,NA,55.52,50.74,4.78,8.609510086,15.02,39.43,4.94,5.18,9.16,Brynn
+Mainland,Euphonia,gouldi,gouldi,5013,,N,"MEXICO, OAXACA",,,,M,NA,58.69,46.68,12.01,20.46345204,14.68,31.69,5.61,5.29,8.51,Mia
+Mainland,Euphonia,laniirostris,hypoxantha,20446,,N,"ECUADOR, PROV. GUAYAS",,,,M,NA,62.37,51.29,11.08,17.7649511,15.65,39.47,4.51,5.12,8.89,Brynn
+Mainland,Euphonia,laniirostris,hypoxantha,49472,,Y,"PERU, DEPTO. PIURA, PROV. SULLANA",,,,M,NA,67.64,52.29,15.35,22.69367238,16.02,36.04,4.34,5.53,9.55,Brynn
+Mainland,Euphonia,gouldi,gouldi,5015,,N,"MEXICO, OAXACA",,1000m,,M,NA,56.99,43.51,13.48,23.6532725,14.6,29.87,5.56,5.18,9.51,Mia
+Mainland,Euphonia,chlorotica,hypoxantha,49409,,Y,"PERU, DEPTO. PIURA, PROV. SULLANA",,,,F,NA,66.14,49.72,16.42,24.8261264,15.78,35.9,4.98,5.98,8.34,Brynn
+Mainland,Euphonia,gouldi,gouldi,5016,,N,"MEXICO, OAXACA",,1000M,,M,NA,58.31,42.01,16.3,27.95403876,16.27,27.53,5.36,5.23,8.85,Mia
+Mainland,Euphonia,gouldi,gouldi,5014,,N,"MEXICO, OAXACA",,1000M,,M,NA,58.11,46.05,12.06,20.7537429,15,29.95,4.95,5.21,8.36,Mia
+Mainland,Euphonia,laniirostris,hypoxantha,49405,,Y,"PERU, DEPTO. PIURA, PROV. SULLANA",,,,M,NA,68.92,54.21,14.71,21.34358677,16.47,40.45,4.91,5.32,8.91,Brynn
+Mainland,Chlorophonia,elegantissima,,1755,,N,0,,,,M,NA,62.71,46.93,15.78,25.16345081,NA,36.55,5.08,4.17,6.71,Mia
+Mainland,Euphonia,hirundinaceae,,5017,,N,"MEXICO, OAXACA",,,,M,NA,61.23,45.07,16.16,26.39229136,14.08,37.87,4.93,5.11,8.36,Brynn
+Mainland,Euphonia,hirundinaceae,,5018,,N,"MEXICO, OAXACA",,,,M,NA,62.32,49.09,13.23,21.22913992,14.12,36.23,4.8,5.36,8.12,Brynn
+Mainland,Chlorophonia,elegantissima,vincens,36063,,N,"MEXICO, CHIAPAS",,,,M,NA,65.4,48.53,16.87,25.79510703,13.55,42.93,4.98,3.98,6.39,Mia
+Mainland,Euphonia,hirundinaceae,,5019,,N,"MEXICO, OAXACA",,,,M,NA,60.51,47.12,13.39,22.12857379,14.33,35.34,4.03,5.05,8.77,Brynn
+Mainland,Chlorophonia,elegantissima,elegantissima,5033,,N,"HONDURAS, MORAZAN",,2600FT,,F,NA,56.44,43.68,12.76,22.60807938,13.84,39.95,5.3,4.11,6.75,Mia
+Mainland,Euphonia,hirundinaceae,,17756,,N,#N/A,,,,F,NA,60.13,50.51,9.62,15.99866955,17.03,37.9,4.56,4.8,8.19,Brynn
+Mainland,Chlorophonia,elegantissima,elegantissima,5034,,N,"HONDURAS, MORAZAN",,,,F,NA,57.53,47.36,10.17,17.67773336,13.29,37.68,5.3,3.74,6.43,Mia
+Mainland,Euphonia,hirundinaceae,,44242,,N,#N/A,,,,M,NA,58.58,49.4,9.18,15.67087743,17.2,37.02,4.98,4.83,7.7,Brynn
+Mainland,Chlorophonia,elegantissima,elegantissima,1573,,N,"HONDURAS, MORAZAN",,2600FT,,M,NA,59.49,45.75,13.74,23.09631871,13.29,36.75,4.63,4.21,6.85,Mia
+Island,Euphonia,violacea,rodwayi,42650,,N,"TRINIDAD & TOBAGO, TRINIDAD, ST. GEORGE CO.",,,,M,NA,60.27,45.52,14.75,24.47320392,,,,,,
+Mainland,Chlorophonia,elegantissima,elegantissima,1559,,N,"HONDURAS, MORAZAN",,2600FT,,F,NA,57.79,46.74,11.05,19.12095518,12.35,34.64,5.35,5,6.67,Mia
+Mainland,Chlorophonia,elegantissima,elegantissima,5032,,N,"HONDURAS, MORAZAN",,2600FT,,F,NA,61.05,48.12,12.93,21.17936118,13.51,35.55,5.21,3.76,6.87,Mia
+Mainland,Chlorophonia,elegantissima,elegantissima,5037,,N,"MEXICO, DISTRITO FEDERAL",,,,M,NA,65.81,52.43,13.38,20.33125665,13.48,41.41,3.71,3.76,6.89,Brynn
+Mainland,Chlorophonia,elegantissima,vincens,36064,,N,"MEXICO, CHIAPAS",,,,F,NA,62.97,49.6,13.37,21.23233286,13.62,39.71,5.76,3.89,7.21,Mia
+Mainland,Chlorophonia,elegantissima,elegantissima,5036,,N,"MEXICO, OAXACA",,,,M,NA,60.44,45.31,15.13,25.03309067,13.07,38.68,4.12,4.02,6.74,Brynn
+Mainland,Chlorophonia,elegantissima,elegantissima,5035,,N,"MEXICO, OAXACA",,2100M,,F,NA,64.57,44.43,20.14,31.19095555,12.59,37.23,5.14,3.88,7.02,Mia
+Mainland,Chlorophonia,occipitalis,occipitalis,5047,,N,"MEXICO, OAXACA",,,,F,NA,76.27,57.97,18.3,23.99370657,20.02,46.97,4.46,5.74,8.61,Brynn
+Mainland,Chlorophonia,occipitalis,,36069,,N,"MEXICO, CHIAPAS",,,,F,NA,72.09,58.68,13.41,18.60174782,17.57,45.23,6.38,5.85,9.19,Mia
+Mainland,Chlorophonia,occipitalis,occipitalis,5046,,N,"MEXICO, OAXACA",,,,F,NA,77.94,58.67,19.27,24.72414678,16.74,47.34,4.17,5.59,10.04,Brynn
+Mainland,Chlorophonia,occipitalis,,36068,,N,"MEXICO, CHIAPAS",,,,M,NA,76.09,59.37,16.72,21.97397818,16.71,45.33,6.03,5.84,9.39,Mia
+Mainland,Chlorophonia,occipitalis,occipitalis,5041,,N,"MEXICO, OAXACA",,,,F,NA,74.92,57.49,17.43,23.2648158,17.37,46.61,4.67,6.43,10.23,Brynn
+Mainland,Chlorophonia,occipitalis,,5043,,N,"MEXICO, OAXACA",,,,F,NA,76.57,54.32,22.25,29.05837795,15.99,49.49,5.12,6.05,10.26,Mia
+Mainland,Chlorophonia,occipitalis,occipitalis,5040,,N,"MEXICO, OAXACA",,,,F,NA,71.1,50.79,20.31,28.56540084,17.33,41.14,4.93,5.59,9.29,Brynn
+Mainland,Chlorophonia,occipitalis,occipitalis,5042,,N,"MEXICO, OAXACA",,500M,,F,NA,76.64,57.97,18.67,24.36064718,17.82,45.37,5.45,6.24,9.85,Mia
+Mainland,Chlorophonia,occipitalis,occipitalis,5039,,N,"MEXICO, OAXACA",,,,F,NA,74.44,55.87,18.57,24.94626545,17.23,43.16,5.14,6.27,10.12,Brynn
+Mainland,Chlorophonia,occipitalis,occipitalis,5044,,N,"MEXICO, OAXACA",,500M,,F,NA,74.07,54.2,19.87,26.82597543,17.9,44.22,4.84,6.38,9.14,Mia
+Mainland,Chlorophonia,occipitalis,occipitalis,5045,,N,"MEXICO, OAXACA",,,,F,NA,77.46,59.12,18.34,23.67673638,18.05,45.12,4.72,5.98,10.13,Brynn

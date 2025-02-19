@@ -1,0 +1,267 @@
+---
+title: "Intraspecific Trait Variation"
+author: "Orlando Acevedo-Charry, Brynn M. Fricke, Mia Keriazes"
+date: "2025-02-19"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Intro and packages
+
+bhla bhla bhla
+
+```{r call packages}
+# data manipulation and visualization
+library(tidyverse)
+
+# correlation plot
+library(corrplot)
+
+# Functional diversity 
+library(funspace); library(TPD)
+```
+
+## Calling data
+
+### Measurements in the museum
+
+```{r data measured}
+data_specimens <- read_csv("flmnh_data/Museum Data Updated.csv") |>
+  mutate(species_updated = paste(Genus, Species, sep = " "),
+         body.mass = as.numeric(Mass))
+
+species <- unique(data_specimens$species_updated)
+
+```
+
+### AVONET raw data
+
+We use the raw data (`AVONET_Raw_Data` sheet in the Excel file) in AVONET ([Tobias et al. Ecol Letters 2022](https://onlinelibrary.wiley.com/doi/10.1111/ele.13898)), to estimate a mean and SD of trait per species. Unfortunately, raw data of AVONET does not include the variation of Body mass, they only included the mean value in their summary (`AVONET2_eBird` sheet in the Excel file). We will pull the other sources of functional traits and estimate mean and SD of this trait afterwards. We also include the taxonomy information in AVONET (eBird).
+
+```{r AVONET raw data}
+avonet <- read_csv("FunctionalTraits/AVONET_Raw_Data.csv") |> 
+  mutate(species_updated = ifelse(eBird.species.group == "Chlorophonia musica flavifrons",
+                                  "Chlorophonia flavifrons",
+                           ifelse(eBird.species.group == "Chlorophonia musica musica",
+                                  "Chlorophonia musica",
+                           ifelse(eBird.species.group == "Chlorophonia musica sclateri",
+                                  "Chlorophonia sclateri",
+                           Species2_eBird)))) |>
+  dplyr::select(species_updated, Source, Specimen.number,
+                Beak.Length_Culmen, Beak.Width, Beak.Depth,
+                Tarsus.Length, `Hand-wing.Index`, Tail.Length) |>
+  rename(HWI = `Hand-wing.Index`) |>
+  filter(species_updated %in% species)
+
+```
+ 
+This raw data does not have Mass values. We can extracted from the summarized `AVONET2_eBird` dataset.
+
+```{r AVONET2_eBird}
+avonet2_eBird <- read_csv("FunctionalTraits/AVONET2_eBird.csv") |>
+  dplyr::select(Species2,
+                Mass, `Hand-Wing.Index`, Tarsus.Length, Tail.Length, 
+                Beak.Length_Culmen, Beak.Width, Beak.Depth) |>
+  rename(body.mass = Mass) |>
+  rename(HWI = `Hand-Wing.Index`)
+
+avonet_raw <- avonet |>
+  left_join(avonet2_eBird |> dplyr::select(Species2, body.mass), 
+            join_by("species_updated" == "Species2"))
+```
+
+Finally, we added the archipelago group (manually) to these 383 specimens
+
+```{r island or mainland for avonet}
+avonet_islands <- read_csv("flmnh_data/AVONET_b_m_specimens_to_review.csv") |> 
+  left_join(avonet_raw)
+```
+
+### Combine data
+
+The NA data will be replaced by the mean reported in AVONET 
+
+```{r generate unified traits data}
+names(data_specimens)
+names(avonet_islands)
+
+traits_specimens <- data_specimens |> 
+  dplyr::select(Archipelago_group, species_updated,
+                body.mass, HWI, Tarsus.Length, Tail.Length, 
+                Beak.Length_Culmen, Beak.Width, Beak.Depth)
+
+traits_avonet <- avonet_islands |>
+  dplyr::select(Archipelago_group, species_updated,
+                body.mass, HWI, Tarsus.Length, Tail.Length, 
+                Beak.Length_Culmen, Beak.Width, Beak.Depth)
+
+data_traits <- traits_specimens |>
+  rbind(traits_avonet) |>
+  group_by(species_updated) |>
+  mutate(body.mass = ifelse(is.na(body.mass), avonet2_eBird$body.mass,
+                            body.mass),
+         HWI = ifelse(is.na(HWI), avonet2_eBird$HWI,
+                            HWI),
+         Tarsus.Length = ifelse(is.na(Tarsus.Length), avonet2_eBird$Tarsus.Length,
+                            Tarsus.Length),
+         Tail.Length = ifelse(is.na(Tail.Length), avonet2_eBird$Tail.Length,
+                            Tail.Length),
+         Beak.Length_Culmen = ifelse(is.na(Beak.Length_Culmen), avonet2_eBird$Beak.Length_Culmen,
+                            Beak.Length_Culmen),
+         Beak.Width = ifelse(is.na(Beak.Width), avonet2_eBird$Beak.Width,
+                            Beak.Width),
+         Beak.Depth = ifelse(is.na(Beak.Depth), avonet2_eBird$Beak.Depth,
+                            Beak.Depth))
+```
+
+Correct some names and add Id for each data, grouping by species
+
+```{r adjust names et al}
+colnames(data_traits) <- c("Archipelago", "Species",
+                           "mass", "h.w.i", "tars.l", "tail.l",
+                           "beak.l", "beak.w", "beak.d")
+
+data_traits <- data_traits |>
+  group_by(Species, Archipelago) |>
+  mutate(Sequence = row_number()) |>
+  ungroup()
+
+# a function for extract strings
+id_specimen <- function(archipelago, species) {
+    archipelago_part <- str_extract_all(archipelago, 
+                                        "\\b\\w{2}") |>
+      unlist() |>
+      paste0(collapse = "")
+    
+    species_part <- str_extract_all(species, 
+                                    "\\b\\w{3}") |>
+      unlist() |>
+      paste0(collapse = "")
+    
+    paste0(species_part, "_", archipelago_part)
+}
+
+data_traits <- data_traits |>
+  mutate(Group = mapply(id_specimen, Archipelago, Species),
+         ID = paste0(Group, "_", Sequence))
+```
+
+## Functional Trait Space - PCA based 
+
+### Chlorophonia-Euphonia
+
+```{r eup-scale and names}
+eup_traits <- data_traits |>
+  filter(Species != "Coereba flaveola")
+
+eup_traits_scl <- as.data.frame(scale(eup_traits[c(3:9)]))
+
+corrplot(round(cor(eup_traits_scl),2), type="upper", order="hclust", 
+         tl.col="black", tl.srt=45)
+
+rownames(eup_traits_scl) <- eup_traits$ID
+
+# Calculating the dimensionality of a functional space based on PCA
+funspaceDim(eup_traits_scl)
+```
+
+Run PCA of the scaled traits and building the functional trait spaces
+
+```{r eup-Run PCA}
+pca.traits.eup <- princomp(eup_traits_scl, cor = T)
+
+plot(pca.traits.eup)
+```
+
+And we can do a functional trait space analysis grouping by species and archipelago
+
+```{r eup-run trait space global and by group}
+# trait space by groups
+trait.space.pca.eu.global <- funspace(x = pca.traits.eup,
+                               n_divisions = 200)
+# trait space by Archipelago
+trait.space.pca.eu.arch <- funspace(x = pca.traits.eup,
+                               group.vec = eup_traits$Archipelago,
+                               n_divisions = 200)
+
+# trait space by group of species by archipelago
+trait.space.pca.eu.group<- funspace(x = pca.traits.eup,
+                               group.vec = eup_traits$Group,
+                               n_divisions = 200)
+```
+
+We can explore the results 
+
+```{r eup-explore trait space global}
+summary(trait.space.pca.eu.global)
+plot(x = trait.space.pca.eu.global, type = "global", 
+     quant.plot = T, arrows = T, arrows.length = 0.75)
+```
+
+```{r eup-explore trait space archipelago}
+summary(trait.space.pca.eu.arch)
+plot(x = trait.space.pca.eu.arch, type = "groups", 
+     quant.plot = T,globalContour = T, pnt = T, pnt.cex = 0.1)
+```
+
+```{r eup-explore trait space group}
+summary(trait.space.pca.eu.group)
+plot(x = trait.space.pca.eu.group, type = "groups", 
+     quant.plot = T, globalContour = T, pnt = T, pnt.cex = 0.1)
+```
+
+### Coereba flaveola
+
+```{r coe-scale and names}
+coe_traits <- data_traits |>
+  filter(Species == "Coereba flaveola")
+
+coe_traits_scl <- as.data.frame(scale(coe_traits[c(3:9)]))
+
+corrplot(round(cor(coe_traits_scl),2), type="upper", order="hclust", 
+         tl.col="black", tl.srt=45)
+
+rownames(coe_traits_scl) <- coe_traits$ID
+
+# Calculating the dimensionality of a functional space based on PCA
+funspaceDim(coe_traits_scl) 
+```
+
+Run PCA of the scaled traits and building the functional trait spaces
+
+```{r coe-Run PCA}
+pca.traits.coe <- princomp(coe_traits_scl, cor = T)
+
+plot(pca.traits.coe)
+```
+
+And we can do a functional trait space analysis grouping by species and archipelago
+
+```{r coe-run trait space global and by group}
+# trait space by groups
+trait.space.pca.coe.global <- funspace(x = pca.traits.coe,
+                               n_divisions = 200)
+# trait space by Archipelago
+trait.space.pca.coe.arch <- funspace(x = pca.traits.coe,
+                               group.vec = coe_traits$Archipelago,
+                               n_divisions = 200)
+```
+
+We can explore the results 
+
+```{r coe-explore trait space global}
+summary(trait.space.pca.coe.global)
+plot(x = trait.space.pca.coe.global, type = "global", 
+     quant.plot = T, arrows = T, arrows.length = 0.75)
+```
+
+```{r coe-explore trait space archipelago}
+summary(trait.space.pca.coe.arch)
+plot(x = trait.space.pca.coe.arch, type = "groups", 
+     quant.plot = T, globalContour = T, pnt = T, pnt.cex = 0.1)
+```
