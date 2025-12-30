@@ -2,9 +2,12 @@
 title: "Intraspecific Trait Variation"
 author: "Orlando Acevedo-Charry, Brynn M. Fricke, Mia Keriazes"
 date: "2025-02-19"
-output: html_document
+output: 
+  html_document:
+    df_print: paged
 editor_options: 
   chunk_output_type: console
+  toc: true
 ---
 
 ```{r setup, include=FALSE}
@@ -13,7 +16,58 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Intro and packages
 
-This code is part of the University Scholars Program by Mia Keriazes and Brynn M. Fricke, advised by Orlando Acevedo-Charry and his advisors: Miguel A. Acevedo and Scott K. Robinson. The project aimed to compare functional traits between species or group of species between mainland and islands populations. In islands, species face reduced interspecific competition and predation compared to their mainland counterparts. As a result, island populations may exhibit broader trait distributions, shifts in trait values, or both. The expected outcomes of ecological release can take different forms (Fig. 1): an expansion of trait values (Fig. 1a), a shift in trait values (Fig. 1b), both effects co-occurring (Fig. 1c), or no change if ecological release does not strongly influence trait evolution (Fig. 1d). Therefore, we hypothesize that island populations will show either greater variability in morphological traits or, if not in addition to, shifts in mean trait values due to ecological release in comparison to mainland populations.  
+This code is part of the University Scholars Program by Mia Keriazes and Brynn M. Fricke, advised by Orlando Acevedo-Charry and his advisors: Miguel A. Acevedo and Scott K. Robinson. Mia, Brynn, and Orlando contributed equally, the order of these three authors were determined by a random sampling:
+
+```{r}
+#names
+total <- c("Mia", "Brynn", "Orlando")
+
+b <- 10000
+
+#repetir siempre la misma muestra (puede variar de computador a computador)
+set.seed(123)
+
+# Para guardar las frecuencias
+autor_freq <- data.frame(Autor1 = character(), 
+                         Autor2 = character(), 
+                         Autor3 = character(), 
+                         Frequencia = numeric(), 
+                         stringsAsFactors = FALSE)
+
+# Un "bootstrapping"
+for (i in 1:b) {
+  # Muestrear dos nombres
+  muestra_autores <- sample(total, 3, replace = FALSE)
+  
+  # Revisar si estos dos nombres ya están en el dataset
+  indice_pareja <- which(autor_freq$Autor1 == muestra_autores[1] & 
+                           autor_freq$Autor2 == muestra_autores[2] &
+                           autor_freq$Autor3 == muestra_autores[3]|
+                        autor_freq$Autor1 == muestra_autores[2] & 
+                          autor_freq$Autor2 == muestra_autores[1] &
+                           autor_freq$Autor3 == muestra_autores[3])
+  
+  if (length(indice_pareja) == 0) {
+    # Si esta pareja no existe, adicionarla al dataframe con la frecuencia de 1
+    autor_freq <- rbind(autor_freq, data.frame(Autor1 = muestra_autores[1], 
+                                               Autor2 = muestra_autores[2], 
+                                               Autor3 = muestra_autores[3],
+                                               Frequencia = 1))
+  } else {
+    # Si la pareja ya existe, aumentar su frecuencia por 1
+    autor_freq$Frequencia[indice_pareja] <- autor_freq$Frequencia[indice_pareja] + 1
+  }
+}
+
+# Ordenar por la frecuencia, de mayor a menor
+autor_freq <- autor_freq[order(-autor_freq$Frequencia), ]
+
+# Ver order de autores
+autor_freq
+```
+
+
+The project aimed to compare functional traits between species or group of species between mainland and islands populations. In islands, species face reduced interspecific competition and predation compared to their mainland counterparts. As a result, island populations may exhibit broader trait distributions, shifts in trait values, or both. The expected outcomes of ecological release can take different forms (Fig. 1): an expansion of trait values (Fig. 1a), a shift in trait values (Fig. 1b), both effects co-occurring (Fig. 1c), or no change if ecological release does not strongly influence trait evolution (Fig. 1d). Therefore, we hypothesize that island populations will show either greater variability in morphological traits or, if not in addition to, shifts in mean trait values due to ecological release in comparison to mainland populations.  
 
 
 ```{r call packages}
@@ -265,18 +319,7 @@ data_traits <- data_traits |>
 summary(data_traits)
 ```
 
-There is a lot of missing data. We can check some allometric relationships to impute this missing data
-
-```{r warning=FALSE}
-names(data_traits)
-GGally::ggpairs(data_traits |>
-#                  filter(Species %in% c("Coereba flaveola")) |>
-                  select(!c(ID, Sequence, Group, ID)), 
-                aes(color = Archipelago), 
-                alpha = 0.25)
-```
-
-Body mass (452 NAs) is highly correlated with Beak length (47 NAs; $\rho = 0.806$). The next higher correlation is between Beak depth and Beak width ($\rho = 0.750$), and then between Body mass and Beak width ($\rho = 0.718$). We can use these correlations, controlling by interaction of Archipelago group and species, to impute missing values.
+There is a lot of missing data. We can impute these from a Bayesian model.
 
 ## A Bayesian framework for imputation and test of posterior mean values per group
 
@@ -285,6 +328,8 @@ We assume that the data missing is at random because the probability to collect 
 For each individual, $i=1, ~...~, N$, the seven traits $\textbf{T}_i=(T_{1,i}, ~...~, T_{7,i})^⊤$ follow $T_{j,i} \sim \text{Normal}(\mu_{j,i}, \tau_j)$ with linear predictors $\mu_{j,i} = \beta_{j}+\beta_{1,j,g(i)}+ \sum_{m<j} \beta_{m→j}T_{m,i}$, where $j = 1, ~...~, 7$ indexes traits in the order $T_1$ is tarsus length (2% of missing values), $T_2$ is tail length (4% of missing values), $T_3$ is beak length (8.6% of missing values), $T_4$ is beak depth (23% of missing values), $T_5$ is hand-wing index (28% of missing values), $T_6$ is beak width (33% of missing values), and $T_7$ is body mass (82% of missing values). The species-archipelago group interaction index for each individual is $g(i)$, so $\beta_{1,j,g(i)}$ are the interaction-specific intercept deviation, while $\beta_{m→j}$ are regression coefficients linking earlier order traits $T_m$ to later order traits $T_j$.
 
 But this model also allow to incorporate group-specific means (and variances) comparisons framed in our hypotheses (shift, expansion, both, none). The group-level mean is the first part of the linear predictor per trait $\mu_{T,g} = \beta_{0,T} + \beta_{1, T}g$. We can include a variance parameter per group, but this could overcomplicate this already heavy hierarchical model. Therefore, we use the variance per trait and will compare groups outside the Bayesian framework (with a Miller Jackknife Procedure `nonpar::miller.jack()`).
+
+### Model implementation
 
 The model in JAGS language is:
 ```{r eval = TRUE}
@@ -330,7 +375,7 @@ Trait.model <- function(){
                   beta4_beakW * beakL[i] + 
                   beta5_beakW * beakD[i] + 
                   beta6_beakW * hwi[i]
-    # T_7 = body mass
+    # T_7 = body mass constrained to positive values
     body[i] ~ dnorm(mu_body[i], tau_body)
     mu_body[i] <- beta0_body + 
                   beta1_body[interaction_index[i]] + 
@@ -412,7 +457,7 @@ Trait.model <- function(){
   beta6_beakW ~ dnorm(0, 0.001)
   tau_beakW ~ dgamma(0.001, 0.001)
   # Priors for T_7 = body
-  beta0_body ~ dnorm(0, 0.001)
+  beta0_body ~ dnorm(14, 1 / 5^2) # 95% roughly [4, 24]
   for (k in 1:(n_species * n_arc)) {
     beta1_body[k] ~ dnorm(0, tau_interaction_body)
   }
@@ -460,8 +505,10 @@ To map the groups after modeling
 ```{r}
 groups_lookup <- data_jags |> 
   distinct(species, arc, interaction_index, Species, Archipelago) |>
-  arrange(interaction_index)
-print(groups_lookup)
+  arrange(interaction_index) |>
+  mutate(Group = mapply(id_specimen, Archipelago, Species))
+
+groups_lookup
 ```
 - Note some combinations do not exist. For example, the species 1 _Chlorophonia cyanocephala_ is only distributed in Mainland, which is the archipelago 5, thus interaction index 1:4 is non-existent, and the unique interaction index is 5. On the other hand, _Coereba flaveola_ (the species 6) has 5 indexes (26:30), corresponding in order to Continental islands, Greater Antilles, Lesser Antilles - Kalinago, Lukayan, and the Mainland. This is not a problem from the model, but it should be taken carefully when interpreted the posterior distribution estimates.
 
@@ -476,13 +523,19 @@ Trait.fit <- jags.fit(data = dat,
                                   "mu_group_tarsus", "mu_group_tail", 
                                   "mu_group_beakL", "mu_group_beakD", 
                                   "mu_group_hwi", "mu_group_beakW", 
-                                  "mu_group_body"),
+                                  "mu_group_body",
+                                  "tau_tarsus", "tau_tail", 
+                                  "tau_beakL", "tau_beakD", 
+                                  "tau_hwi", "tau_beakW",
+                                  "tau_body"),
                        model = Trait.model, 
                       n.adapt = 10000,
                       n.iter = 50000,
                       thin = 5)
 saveRDS(Trait.fit, "flmnh_data/Trait_fit.RDS")
 ```
+
+### Extract imputed values
 
 Extract posterior means of imputed values and add to original data to see the missing values
 
@@ -525,10 +578,13 @@ data_traits$bodyMass_imputed[is.na(data_traits$mass)] <- body_means[is.na(data_t
 saveRDS(data_traits, 'flmnh_data/data_traits_imputed.rds')
 ```
 
+### Extract posterior distributions per group
+
 Extract posterior means of the mean per group with 95% High Density Intervals 
 
 ```{r}
 mu_params <- grep("mu_group_", colnames(mcmc_mat), value = TRUE)
+tau_params <- grep("tau_", colnames(mcmc_mat), value = TRUE)
 
 extract_summary <- function(samples_vec) {
   list( 
@@ -561,7 +617,126 @@ posterior_traits <- groups_lookup |>
 saveRDS(posterior_traits, "flmnh_data/Posterior_summaries.RDS")
 ```
 
-## Comparisons of islands and the mainland populations
+### Effect size and probability of falling under Region Of Practical Equivalence (ROPE)
+
+We can use the trait variance $\sigma_{T}$ and the mean difference $\Delta_T = \mu_{T,g1} - \mu_{T,g2}$ to estimate a Cohen's $d$ effect size for each trait $T$ as $d_T = \Delta_T / \sigma_{T}$. The probability of falling under a Region Of Practical Equivalence could be expressed for the mean difference ($p(\Delta ∈ \text{ROPE}_{\Delta})$) as well as the Cohen's $d$ effect size ($p(d ∈ \text{ROPE}_{d})$). A high $p$ in ROPE, let's say $≥0.95$, is indicative of evidence for practically no difference, while a low $p$ in ROPE, close to $0$, is evidence for a practically meaningful or clear difference. In our case, this will indicate shifts in the trait values across populations from the islands with respect to the mainland. Given that we have seven traits of different units (HWI units, mm, gr), we will focus on $p(d ∈ \text{ROPE}_{d})$, with a $\text{ROPE}_{d} = [-0.1,0.1]$. 
+
+```{r}
+effect_for_trait <- function(trait, g1, g2, 
+                             mcmc_mat, 
+                             rope_diff = c(-0.1, 0.1), # ROPE on raw scale 
+                             rope_d = c(-0.1, 0.1)) { # ROPE on d (common choice) 
+  # Column names for group means 
+  col_mu1 <- paste0("mu_group_", trait, "[", g1, "]") 
+  col_mu2 <- paste0("mu_group_", trait, "[", g2, "]") 
+  
+  # Sanity check 
+  if (!all(c(col_mu1, col_mu2) %in% colnames(mcmc_mat))) { 
+    stop("Columns not found: ", paste(setdiff(c(col_mu1, col_mu2), colnames(mcmc_mat)), collapse = ", ")) } 
+  
+  # Posterior draws 
+  mu1 <- mcmc_mat[, col_mu1] 
+  mu2 <- mcmc_mat[, col_mu2] 
+  diff <- mu1 - mu2 # Δ = μ_g1 - μ_g2 
+  
+  # Get tau_trait and sigma_trait 
+  col_tau <- paste0("tau_", trait) 
+  if (!col_tau %in% colnames(mcmc_mat)) { 
+    stop("Tau column not found: ", col_tau) 
+  } 
+  tau <- mcmc_mat[, col_tau] 
+  sigma <- 1 / sqrt(tau) # σ_T 
+  
+  # Cohen's d (equal-variance model) 
+  d_vals <- diff / sigma 
+  
+  # Summaries for Δ 
+  hdi_diff <- hdi(diff, credMass = 0.95) 
+  
+  # Summaries for d 
+  hdi_d <- hdi(d_vals, credMass = 0.95) 
+  tibble( 
+    Trait = trait, 
+    g1 = g1, 
+    g2 = g2, 
+    diff_mean = mean(diff), 
+    diff_hdi_l = hdi_diff[1], 
+    diff_hdi_u = hdi_diff[2], 
+    d_mean = mean(d_vals), 
+    d_hdi_l = hdi_d[1], 
+    d_hdi_u = hdi_d[2], 
+    # ROPE on raw difference 
+    rope_diff_low = rope_diff[1], 
+    rope_diff_high = rope_diff[2], 
+    p_in_rope_diff = mean(diff > rope_diff[1] & diff < rope_diff[2]), 
+    # ROPE on d 
+    rope_d_low = rope_d[1], 
+    rope_d_high = rope_d[2], 
+    p_in_ROPE_d = mean(d_vals > rope_d[1] & d_vals < rope_d[2]) 
+  ) 
+}
+```
+
+Group labels and interaction index of the model
+
+```{r}
+traits_vec <- c("tarsus","tail","beakL","beakD","hwi","beakW","body")
+
+contrasts <- tribble( 
+  ~group_A, ~group_B, 
+  "Eupaff_Ma", "Eupjam_GrAn", 
+  "Eupchl_Ma", "Eupjam_GrAn", 
+  "Eupvio_Ma", "Eupvio_Cois", 
+  "Euplan_Ma", "Eupvio_Cois", 
+  "Chlcya_Ma", "Chlmus_GrAn", 
+  "Chlcya_Ma", "Chlscl_GrAn", 
+  "Chlcya_Ma", "Chlfla_LeAnKa", 
+  "Coefla_Ma", "Coefla_Cois", 
+  "Coefla_Ma", "Coefla_GrAn", 
+  "Coefla_Ma", "Coefla_LeAnKa", 
+  "Coefla_Ma", "Coefla_Lu" 
+  )
+
+contrasts_idx <- contrasts |> 
+  left_join(groups_lookup |> 
+              select(Group, interaction_index), 
+            by = c("group_A" = "Group")) |> 
+  rename(g1 = interaction_index) |> 
+  left_join(groups_lookup |> 
+              select(Group, interaction_index), 
+            by = c("group_B" = "Group")) |> 
+  rename(g2 = interaction_index)
+contrasts_idx
+```
+
+This tibble include the two groups to contrast (Mainland-Islands) and the interaction index in the model, which are 10 contrasts. We can expand this table to include the traits, which will have 70 rows.
+
+```{r}
+contrast_trait_tbl <- expand_grid( 
+  Trait = traits_vec, 
+  contrasts_idx 
+  )
+contrast_trait_tbl
+```
+
+And then, apply for all traits across the comparisons
+```{r}
+effects_all <- contrast_trait_tbl |> 
+  pmap_dfr(function(Trait, group_A, group_B, g1, g2) { 
+    effect_for_trait( 
+      trait = Trait, 
+      g1 = g1, 
+      g2 = g2, 
+      mcmc_mat = mcmc_mat, 
+      rope_diff = c(-0.1, 0.1), 
+      rope_d = c(-0.1, 0.1) 
+      ) |> 
+      mutate(group_A = group_A, group_B = group_B) 
+    })
+effects_all[,c(1,16,2,17,3,5,4,6,15)]
+```
+
+## Figures of comparison of islands and the mainland populations
 
 We can compare the difference of the posterior means (and 95%HDI) between groups for "shift hypothesis", while the Miller Jackknife Procedure `nonpar::miller.jack()` to compare variance
 
@@ -583,6 +758,7 @@ contrasts <- tribble(
   "Euplan_Ma", "Eupvio_Cois", 
   "Chlcya_Ma", "Chlmus_GrAn", 
   "Chlcya_Ma", "Chlscl_GrAn", 
+  "Chlcya_Ma", "Chlfla_LeAnKa", 
   "Coefla_Ma", "Coefla_Cois", 
   "Coefla_Ma", "Coefla_GrAn", 
   "Coefla_Ma", "Coefla_LeAnKa", 
@@ -595,10 +771,8 @@ run_miller <- function(trait, group_A, group_B) {
   out <- miller.jack(x, y) 
   tibble( 
     trait = trait, 
-    group_A = group_A, 
-    group_B = group_B, 
-    statistic = out@TestStat, 
-    p_value = out@PVal 
+    J = out@TestStat,
+    p = out@PVal 
   ) 
 }
 
@@ -611,8 +785,31 @@ results_miller <- contrasts |>
     )) |> unnest(results, names_sep = "_")
 
 results_miller
+
+results_miller$J <- as.numeric(sub(".*\\s+", "",results_miller$results_J))
+
+results_miller$PVal <- as.numeric(unlist(sub(".*\\s+", "", results_miller$results_p)))
+
 ```
 
+Let's combine both results in a single dataset
+```{r}
+EcoReleaseResults <- results_miller |>
+  mutate(Trait = ifelse(results_trait == "beakD_imputed", "beakD",
+                 ifelse(results_trait == "beakL_imputed", "beakL",
+                 ifelse(results_trait == "beakW_imputed", "beakW",
+                 ifelse(results_trait == "bodyMass_imputed", "body",
+                 ifelse(results_trait == "hwi_imputed", "hwi",
+                 ifelse(results_trait == "tail_imputed", "tail",
+                 ifelse(results_trait == "tarsus_imputed", "tarsus",
+                 results_trait)))))))) |>
+  select(!c(results_trait)) |>
+  left_join(effects_all) |> 
+  select(Trait, group_A, group_B, 
+         d_hdi_l, d_mean, d_hdi_u, p_in_ROPE_d, #shift
+         J, PVal) # expansion
+  
+```
 
 We ordered in time calibrated history of Caribbean invasions and available phylogenies. First Euphonias I, with _Euphonia jamaica_ arriving around 3.5 Ma. Then, during the Pleistocene, around 1.18 Ma, Euphonias II include _Euphonia violacea_ in Trinidad and Tobago, but also diversification of Cyanophonias in the Lesser and Greater Antilles.
 
@@ -620,6 +817,18 @@ We ordered in time calibrated history of Caribbean invasions and available phylo
 Euphonias I: _Euphonia chlorotica_ (M), _Euphonia affinis_ (M), _Euphonia jamaica_ (GA)
 
 ```{r}
+#expansion
+EcoReleaseResults |>
+  filter(group_A %in% c("Eupchl_Ma",
+                        "Eupaff_Ma"),
+         PVal < 0.05)
+
+#shift
+EcoReleaseResults |>
+  filter(group_A %in% c("Eupchl_Ma",
+                        "Eupaff_Ma"),
+         p_in_ROPE_d < 0.05)
+
 data_traits <- readRDS('flmnh_data/data_traits_imputed.rds')
 
 EuphoniaI <- data_traits |>
@@ -749,6 +958,18 @@ ggsave(FigEupI, filename = "Figure_EuphoniaI.jpg", width = 10, height = 8)
 Euphonia II: _Euphonia laniirostris_ (M), _Euphonia violacea_ (M), _Euphonia violacea_ (CI)
 
 ```{r}
+#expansion
+EcoReleaseResults |>
+  filter(group_A %in% c("Euplan_Ma",
+                        "Eupvio_Ma"),
+         PVal < 0.05)
+
+#shift
+EcoReleaseResults |>
+  filter(group_A %in% c("Euplan_Ma",
+                        "Eupvio_Ma"),
+         p_in_ROPE_d < 0.05)
+
 table(data_traits$Group)
 Euphlani <- data_traits |>
   filter(Species %in% c("Euphonia laniirostris")) |> 
@@ -882,6 +1103,16 @@ ggsave(FigEupII, filename = "Figure_EuphoniaII.jpg", width = 10, height = 8)
 Cyanophonias: _Chlorophonia cyanocephala_ (M), _Chlorophonia musica_ (GA), _Chlorophonia sclateri_ (GA)
 
 ```{r}
+#expansion
+EcoReleaseResults |>
+  filter(group_A %in% c("Chlcya_Ma"),
+         PVal < 0.05)
+
+#shift
+EcoReleaseResults |>
+  filter(group_A %in% c("Chlcya_Ma"),
+         p_in_ROPE_d < 0.05)
+
 Cyanophonias <- data_traits |>
   filter(Species %in% c("Chlorophonia cyanocephala", 
                         "Chlorophonia musica",
@@ -914,7 +1145,8 @@ Chlfla <- Cyanophonias |>
 Cyaraw <- data_traits |>
   filter(Species %in% c("Chlorophonia cyanocephala", 
                         "Chlorophonia musica",
-                        "Chlorophonia sclateri")) |> 
+                        "Chlorophonia sclateri",
+                        "Chlorophonia flavifrons")) |> 
   select(Archipelago, Species, Sequence, Group, ID,
          beak.l, beak.d, beak.w,
          tars.l, h.w.i, tail.l,
@@ -925,7 +1157,8 @@ Cyaraw <- data_traits |>
   mutate(Group = factor(Group, 
                         levels = c("Chlcya_Ma", 
                                    "Chlscl_GrAn",
-                                   "Chlmus_GrAn")),
+                                   "Chlmus_GrAn",
+                                   "Chlfla_LeAnKa")),
          Trait = ifelse(trait == "beak.d", "Beak depth\n(mm)",
                  ifelse(trait == "beak.l", "Beak length\n(mm)",
                  ifelse(trait == "beak.w", "Beak width\n(mm)",
@@ -944,14 +1177,15 @@ FigCyana <- Cyanophonias |>
                names_to = "trait", 
                values_to = "value") |>
   mutate(Group = ifelse(Group == "Chlcya_Ma", "C. cyanocephala - Mainland",
-                 ifelse(Group == "Chlscl_GrAn", "C. sclateri - Gr. Antilles-Puerto Rican",
-                 ifelse(Group == "Chlmus_GrAn", "C. musica - Gr. Antilles-Hispaniolan",
-                        Group))),
+                 ifelse(Group == "Chlscl_GrAn", "C. sclateri - Gr. Antilles-Boriken",
+                 ifelse(Group == "Chlmus_GrAn", "C. musica - Gr. Antilles-Kiskeya",
+                 ifelse(Group == "Chlfla_LeAnKa", "C. flavifrons - Lesser Antilles-Kalinago",
+                        Group)))),
          Group = factor(Group, 
                         levels = c("C. cyanocephala - Mainland", 
-                                   "C. musica - Gr. Antilles-Hispaniolan",
-                                   "C. sclateri - Gr. Antilles-Puerto Rican",
-                                   "Chlfla_LeAnKa")),
+                                   "C. musica - Gr. Antilles-Kiskeya",
+                                   "C. sclateri - Gr. Antilles-Boriken",
+                                   "C. flavifrons - Lesser Antilles-Kalinago")),
          Trait = ifelse(trait == "beakD_imputed", "Beak depth\n(mm)",
                  ifelse(trait == "beakL_imputed", "Beak length\n(mm)",
                  ifelse(trait == "beakW_imputed", "Beak width\n(mm)",
@@ -960,25 +1194,27 @@ FigCyana <- Cyanophonias |>
                  ifelse(trait == "tail_imputed", "Tail length\n(mm)",
                  ifelse(trait == "tarsus_imputed", "Tarsus length\n(mm)",
                         trait)))))))) |>
-  filter(Group != "Chlfla_LeAnKa") |>
   ggplot(aes(x = value, fill = Group, color = Group)) +
   facet_wrap(~Trait, scales = "free") +
   geom_density(alpha = 0.5) +
   geom_point(aes(y = 0), shape = "I")+
   geom_point(data = Cyaraw |>
                mutate(Group = ifelse(Group == "Chlcya_Ma", "C. cyanocephala - Mainland",
-                              ifelse(Group == "Chlscl_GrAn", "C. sclateri - Gr. Antilles-Puerto Rican",
-                              ifelse(Group == "Chlmus_GrAn", "C. musica - Gr. Antilles-Hispaniolan",
-                                Group))),
+                              ifelse(Group == "Chlscl_GrAn", "C. sclateri - Gr. Antilles-Boriken",
+                              ifelse(Group == "Chlmus_GrAn", "C. musica - Gr. Antilles-Kiskeya",
+                              ifelse(Group == "Chlfla_LeAnKa", "C. flavifrons - Lesser Antilles-Kalinago",
+                        Group)))),
                       Group = factor(Group, 
                                      levels = c("C. cyanocephala - Mainland",
-                                   "C. musica - Gr. Antilles-Hispaniolan", 
-                                   "C. sclateri - Gr. Antilles-Puerto Rican"))), 
+                                   "C. musica - Gr. Antilles-Kiskeya", 
+                                   "C. sclateri - Gr. Antilles-Borkiken", 
+                                   "C. flavifrons - Lesser Antilles-Kalinago"))) |>
+               drop_na(), 
          aes(y = 0), shape = "o")+
   geom_vline(data = Chlfla, aes(xintercept = value), 
              linetype = "dashed", color = "#ed8c11") +
-  scale_fill_manual(values = c("#998ec3","#f4ba70", "#f1a340")) +
-  scale_color_manual(values = c("#998ec3","#f4ba70", "#f1a340")) +
+  scale_fill_manual(values = c("#998ec3","#f4ba70", "#f1a340", "#ed8c11")) +
+  scale_color_manual(values = c("#998ec3","#f4ba70", "#f1a340", "#ed8c11")) +
   labs(title = "Cyanophonias - Trait distributions", 
        tag = expression(bold("(a)")),
        x = "Trait values", 
@@ -994,13 +1230,13 @@ FigCyanb <- posterior_traits |>
                         "Chlorophonia sclateri",
                         "Chlorophonia flavifrons")) |>
   mutate(Group = ifelse(Group == "Chlcya_Ma", "C. cyanocephala - Mainland",
-                              ifelse(Group == "Chlscl_GrAn", "C. sclateri - Gr. Antilles-Puerto Rican",
-                              ifelse(Group == "Chlmus_GrAn", "C. musica - Gr. Antilles-Hispaniolan",
+                              ifelse(Group == "Chlscl_GrAn", "C. sclateri - Gr. Antilles-Boriken",
+                              ifelse(Group == "Chlmus_GrAn", "C. musica - Gr. Antilles-Kiskeya",
                                 Group))),
                       Group = factor(Group, 
                                      levels = c("C. cyanocephala - Mainland",
-                                   "C. musica - Gr. Antilles-Hispaniolan", 
-                                   "C. sclateri - Gr. Antilles-Puerto Rican",
+                                   "C. musica - Gr. Antilles-Kiskeya", 
+                                   "C. sclateri - Gr. Antilles-Boriken",
                                    "Chlfla_LeAnKa")),
          Trait = ifelse(Trait == "beakD", "Beak depth\n(mm)",
                  ifelse(Trait == "beakL", "Beak length\n(mm)",
@@ -1034,6 +1270,16 @@ ggsave(FigCyan, filename = "Figure_Cyanophonias.jpg", width = 10, height = 8)
 Bananaquits: _Chlorophonia cyanocephala_ (M), _Chlorophonia musica_ (GA), _Chlorophonia sclateri_ (GA)
 
 ```{r}
+#expansion
+EcoReleaseResults |>
+  filter(group_A %in% c("Coefla_Ma"),
+         PVal < 0.05)
+
+#shift
+EcoReleaseResults |>
+  filter(group_A %in% c("Coefla_Ma"),
+         p_in_ROPE_d < 0.05)
+
 bananasM <- data_traits |>
   filter(Species %in% c("Coereba flaveola"), 
          Archipelago == "Mainland") |> 
